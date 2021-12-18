@@ -1,0 +1,26 @@
+world-folder-name: 'world_the_end'
+reset-on-enable: false
+regions-to-save:
+  - 'r.-1.-1.mca'
+  - 'r.-1.-1.mca'
+  - 'r.-1.0.mca'
+  - 'r.-2.-2.mca'
+  - 'r.-1.-2.mca'
+  - 'r.0.-2.mca'
+  - 'r.1.-2.mca'
+  - 'r.-2.-1.mca'
+  - 'r.-2.0.mca'
+  - 'r.1.-1.mca'
+  - 'r.1.0.mca'
+  - 'r.-2.1.mca'
+  - 'r.-1.1.mca'
+  - 'r.0.1.mca'
+  - 'r.1.1.mca'
+  - 'r.0.-1.mca'
+  - 'r.0.0.mca'
+
+config:
+  plugin-version: '1.0.0-beta'
+  alert-op-on-new-version: true
+  version: 1
+  dev-mode: false
