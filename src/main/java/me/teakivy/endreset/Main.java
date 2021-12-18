@@ -23,9 +23,18 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         new ResetEndCommand().register();
-        saveDefaultConfig();
-
-        if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
+//        saveDefaultConfig();
+        if (!this.getConfig().getBoolean("config.dev-mode")) {
+            if (this.getConfig().getInt("config.version") < Objects.requireNonNull(this.getConfig().getDefaults()).getInt("config.version")) {
+                try {
+                    ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
+                    this.reloadConfig();
+                    this.getLogger().info("Config updated to version " + this.getConfig().getInt("config.version"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
             try {
                 ConfigUpdater.update(this, "config.yml", new File(this.getDataFolder(), "config.yml"), Collections.emptyList(), true);
                 this.reloadConfig();
@@ -47,7 +56,7 @@ public final class Main extends JavaPlugin {
         }
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-            getLogger().warning(ChatColor.GOLD + "A new version of EndReset is available: " + latestVersion + "\nhttps://www.spigotmc.org/resources/+-tweaks.94021/");
+            getLogger().warning(ChatColor.GOLD + "A new version of EndReset is available: " + latestVersion);
             getLogger().warning(ChatColor.YELLOW + "https://www.spigotmc.org/resources/+-tweaks.94021/");
             newVersionAvaliable = true;
             latestVTVersion = latestVersion;
