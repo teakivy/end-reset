@@ -48,6 +48,7 @@ public final class Main extends JavaPlugin {
         String thisVersion = this.getDescription().getVersion();
         if (!thisVersion.equalsIgnoreCase(latestVersion)) {
             getLogger().warning(ChatColor.GOLD + "A new version of EndReset is available: " + latestVersion + "\nhttps://www.spigotmc.org/resources/+-tweaks.94021/");
+            getLogger().warning(ChatColor.YELLOW + "https://www.spigotmc.org/resources/+-tweaks.94021/");
             newVersionAvaliable = true;
             latestVTVersion = latestVersion;
         }
