@@ -29,6 +29,8 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         logger = getLogger();
 
+        this.saveDefaultConfig();
+
         if (!getConfig().getBoolean("config.ignore-warnings")) {
             logger.info(ChatColor.YELLOW + "This plugin is still in development. Please report any bugs to the github or on our Discord Server");
             logger.info(ChatColor.YELLOW + "If you want to ignore this warning, please set \"config.ignore-warnings\" to true in the config.yml file");
