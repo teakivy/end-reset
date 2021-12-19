@@ -32,6 +32,13 @@ public class EndReset {
         if (Main.devMode) Main.logger.info("Unloaded " + worldName);
 
         File dir = new File(new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), worldName).toString() + "/DIM1/region");
+
+        if (!dir.exists()) {
+            if (sender != null) sender.sendMessage(ChatColor.RED + "The world " + worldName + " has an improper file scheme!");
+            Main.logger.severe("The world " + worldName + " has an improper file scheme!");
+            return;
+        }
+
         if (Main.devMode) Main.logger.info("Found World Folder " + worldName);
 
         for(File file1: dir.listFiles())
