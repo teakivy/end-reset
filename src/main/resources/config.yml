@@ -1,6 +1,7 @@
 # This is the name of the end folder.
 # For most servers this will just be "world_the_end", though this can vary by server.
 world-folder-name: 'world_the_end'
+
 # Whether to reset the world when the plugin starts. Simply change false to true to enable this option.
 reset-on-enable: false
 
@@ -32,3 +33,4 @@ config:
   alert-op-on-new-version: true
   version: 1
   dev-mode: false
+  ignore-warnings: false
