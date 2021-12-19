@@ -21,24 +21,37 @@ public class EndReset {
                 player.teleport(spawn);
             }
         }
+        if (Main.devMode) Main.logger.info("Removed players from " + worldName);
         for (
         Chunk chunk : Bukkit.getWorld(worldName).getLoadedChunks()) {
             chunk.unload();
         }
+        if (Main.devMode) Main.logger.info("Unloaded all chunks in " + worldName);
 
         Bukkit.getServer().unloadWorld(worldName, true);
+        if (Main.devMode) Main.logger.info("Unloaded " + worldName);
 
         File dir = new File(new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), worldName).toString() + "/DIM1/region");
+        if (Main.devMode) Main.logger.info("Found World Folder " + worldName);
 
         for(File file1: dir.listFiles())
                 if (!file1.isDirectory())
-                if (!main.getConfig().getStringList(worldName).contains(file1.getName()))
-                file1.delete();
+                if (!main.getConfig().getStringList("regions-to-save").contains(file1.getName())) {
+                    file1.delete();
+                    if (Main.devMode) Main.logger.info("Deleted " + file1.getName());
+                } else {
+                    if (Main.devMode) Main.logger.info("Skipped " + file1.getName());
+                }
 
         WorldCreator wcEnd = new WorldCreator(worldName);
         wcEnd.environment(World.Environment.THE_END);
         wcEnd.createWorld();
+        if (Main.devMode) Main.logger.info("Loaded " + worldName);
 
-        sender.sendMessage(ChatColor.GREEN + "The End has been reset!");
+        if (sender != null) {
+            sender.sendMessage(ChatColor.GREEN + "The End has been reset!");
+        }
+
+        Main.logger.info("Reset " + worldName);
     }
 }

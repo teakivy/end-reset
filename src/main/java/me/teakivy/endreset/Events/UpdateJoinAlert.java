@@ -18,6 +18,7 @@ public class UpdateJoinAlert implements Listener {
             if (main.getConfig().getBoolean("config.alert-op-on-new-version")) {
                 if (main.newVersionAvaliable) {
                     player.sendMessage(ChatColor.GOLD + "A new version of EndReset is available: " + main.latestVTVersion + ChatColor.YELLOW + "\nhttps://www.spigotmc.org/resources/+-tweaks.94021/");
+                    if (Main.devMode) Main.logger.info("Proposed new version " + main.latestVTVersion + " to " + player.getName());
                 }
             }
         }
