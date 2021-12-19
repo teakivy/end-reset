@@ -1,6 +1,7 @@
 package me.teakivy.endreset;
 
 import me.teakivy.endreset.Commands.ResetEndCommand;
+import me.teakivy.endreset.Events.UpdateJoinAlert;
 import me.teakivy.endreset.Utils.ConfigUpdater;
 import me.teakivy.endreset.Utils.EndReset;
 import me.teakivy.endreset.Utils.Metrics.Metrics;
@@ -65,25 +66,25 @@ public final class Main extends JavaPlugin {
         }
 
 
-//        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
+        getServer().getPluginManager().registerEvents(new UpdateJoinAlert(), this);
         if (Main.devMode) logger.info("Registered update event");
 
         String latestVersion = null;
         try {
-            latestVersion = new UpdateChecker(this, 94021).getLatestVersion();
+            latestVersion = new UpdateChecker(this, 98479).getLatestVersion();
             if (Main.devMode) logger.info("Found latest version");
         } catch (IOException | ParseException e) {
             e.printStackTrace();
             getLogger().severe(ChatColor.RED + "Failed to check for updates");
         }
-//        String thisVersion = this.getDescription().getVersion();
-//        if (!thisVersion.equalsIgnoreCase(latestVersion)) {
-//            getLogger().warning(ChatColor.GOLD + "A new version of EndReset is available: " + latestVersion);
-//            getLogger().warning(ChatColor.YELLOW + "https://www.spigotmc.org/resources/+-tweaks.94021/");
-//            newVersionAvaliable = true;
-//            latestVTVersion = latestVersion;
-//            if (Main.devMode) logger.info("Proposed new version " + latestVersion);
-//        }
+        String thisVersion = this.getDescription().getVersion();
+        if (!thisVersion.equalsIgnoreCase(latestVersion)) {
+            getLogger().warning(ChatColor.GOLD + "A new version of EndReset is available: " + latestVersion);
+            getLogger().warning(ChatColor.YELLOW + "https://www.spigotmc.org/resources/end-reset-1-18.98479/");
+            newVersionAvaliable = true;
+            latestVTVersion = latestVersion;
+            if (Main.devMode) logger.info("Proposed new version " + latestVersion);
+        }
 
         Metrics metrics = new Metrics(this, 13640);
         registerCustomMetrics(metrics);
