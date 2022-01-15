@@ -29,8 +29,8 @@ regions-to-save:
 
 # Plugin settings
 config:
-  plugin-version: '1.0.2-beta'
+  plugin-version: '1.1.0-beta'
   alert-op-on-new-version: true
-  version: 3
+  version: 4
   dev-mode: false
   ignore-warnings: false
