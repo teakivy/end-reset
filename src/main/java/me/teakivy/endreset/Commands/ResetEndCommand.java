@@ -26,14 +26,13 @@ public class ResetEndCommand extends AbstractCommand {
         }
 
         if (args[0].equalsIgnoreCase("confirm")) {
-            if (!sender.isOp()) {
+            if (!sender.hasPermission("endreset.resetend")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
                 return true;
             }
             sender.sendMessage(ChatColor.GREEN + "Resetting " + worldName + "..." + "\n" + "Depending on the size of the world, this could take a few minutes.");
             EndReset.resetEnd(sender, worldName);
         }
-
 
         return false;
     }

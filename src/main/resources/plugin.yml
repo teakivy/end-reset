@@ -6,3 +6,12 @@ prefix: ER
 authors: [ TeakIvy ]
 description: Reset the end with a command
 website: https://youtube.com/teakivy
+permissions:
+  endreset.*:
+    description: "All endreset permissions"
+    default: op
+    children:
+      - endreset.resetend
+  endreset.resetend:
+    description: "Reset the end"
+    default: op
