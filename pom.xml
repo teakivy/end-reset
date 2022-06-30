@@ -6,7 +6,7 @@
 
     <groupId>me.teakivy</groupId>
     <artifactId>endreset</artifactId>
-    <version>1.1.0-beta</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>EndReset</name>
@@ -19,6 +19,7 @@
     <url>https://youtube.com/teakivy</url>
 
     <build>
+        <finalName>EndReset - ${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
