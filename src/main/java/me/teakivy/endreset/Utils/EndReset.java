@@ -17,7 +17,7 @@ public class EndReset {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.getWorld().getName().equals(worldName)) {
                 Location spawn = player.getBedSpawnLocation();
-                if (spawn == null) spawn = Objects.requireNonNull(Bukkit.getWorld(worldName)).getSpawnLocation();
+                if (spawn == null) spawn = Objects.requireNonNull(Bukkit.getWorlds().get(0)).getSpawnLocation();
                 player.teleport(spawn);
             }
         }
@@ -31,11 +31,12 @@ public class EndReset {
         Bukkit.getServer().unloadWorld(worldName, true);
         if (Main.devMode) Main.logger.info("Unloaded " + worldName);
 
-        File regionDir = new File(new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), worldName).toString() + "/DIM1/region");
+        File regionDir = new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), "world/dimensions/minecraft/the_end/region");
 
         if (!regionDir.exists()) {
             if (sender != null) sender.sendMessage(ChatColor.RED + "The world " + worldName + " has an improper file scheme!");
             Main.logger.severe("The world " + worldName + " has an improper file scheme!");
+            System.out.println("fail");
             return;
         }
 
@@ -50,7 +51,7 @@ public class EndReset {
                     if (Main.devMode) Main.logger.info("Skipped " + file1.getName());
                 }
 
-        File entityDir = new File(new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), worldName).toString() + "/DIM1/entities");
+        File entityDir = new File(Main.getPlugin(Main.class).getServer().getWorldContainer(), "world/dimensions/minecraft/the_end/entities");
 
         if (!entityDir.exists()) {
             if (sender != null) sender.sendMessage(ChatColor.RED + "The world " + worldName + " has an improper file scheme!");

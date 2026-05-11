@@ -15,13 +15,12 @@ public class ResetEndCommand extends AbstractCommand {
     }
 
     Main main = Main.getPlugin(Main.class);
-    String worldName = main.getConfig().getString("world-folder-name");
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Please confirm that you would like to reset " + worldName + ".\nType /resetend confirm to continue.");
+            sender.sendMessage(ChatColor.RED + "Please confirm that you would like to reset The End.\nType /resetend confirm to continue.");
             return true;
         }
 
@@ -30,8 +29,8 @@ public class ResetEndCommand extends AbstractCommand {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
                 return true;
             }
-            sender.sendMessage(ChatColor.GREEN + "Resetting " + worldName + "..." + "\n" + "Depending on the size of the world, this could take a few minutes.");
-            EndReset.resetEnd(sender, worldName);
+            sender.sendMessage(ChatColor.GREEN + "Resetting The End..." + "\n" + "Depending on the size of the world, this could take a few minutes.");
+            EndReset.resetEnd(sender, "world_the_end");
         }
 
         return false;

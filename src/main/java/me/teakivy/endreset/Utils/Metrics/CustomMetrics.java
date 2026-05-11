@@ -19,7 +19,7 @@ public class CustomMetrics {
             @Override
             public Map<String, Integer> call() throws Exception {
                 Map<String, Integer> valueMap = new HashMap<>();
-                valueMap.put(main.getConfig().getString("world-folder-name"), 1);
+                valueMap.put("world_the_end", 1);
                 return valueMap;
             }
         }));

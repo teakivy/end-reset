@@ -94,7 +94,7 @@ public final class Main extends JavaPlugin {
 
         if (getConfig().getBoolean("reset-on-enable")) {
             logger.info("Resetting end");
-            EndReset.resetEnd(null, getConfig().getString("world-folder-name"));
+            EndReset.resetEnd(null, "world_the_end");
         }
     }
 
